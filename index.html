@@ -1,42 +1,318 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10131c"><title>RedBitKit — Stack. Clear. Collect.</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-:root{--bg:#10131c;--panel:#191e2a;--panel2:#202737;--line:#30394a;--text:#f4f5f8;--muted:#9ba6b8;--red:#ff4d5a;--gold:#ffcf70;--green:#73e0ac;--cell:#252e3d;--shadow:0 18px 60px #0005}*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(ellipse at 50% -20%,#2b2b47 0,transparent 55%),var(--bg);font-family:'Space Grotesk',system-ui,sans-serif;min-height:100vh}button{font:inherit;color:inherit;cursor:pointer;border:0}.wrap{max-width:1120px;padding:0 22px;margin:auto}.top{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}.brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:19px;letter-spacing:-.7px}.logo{width:34px;height:34px;border-radius:10px;background:var(--red);display:grid;place-items:center;box-shadow:0 5px 20px #ff4d5a55}.logo svg{width:21px}.nav{display:flex;gap:7px}.nav button,.smallbtn{background:transparent;color:var(--muted);padding:10px 14px;border-radius:10px;font-size:14px}.nav button:hover,.smallbtn:hover{background:#ffffff0b;color:var(--text)}.wallet{font:500 13px 'DM Mono',monospace;background:#252b38;padding:10px 13px;border:1px solid var(--line);border-radius:11px;color:var(--gold);white-space:nowrap}.hero{text-align:center;padding:35px 0 25px}.eyebrow{font:11px 'DM Mono',monospace;letter-spacing:2px;text-transform:uppercase;color:#ff7781}.hero h1{font-size:clamp(35px,6vw,57px);line-height:1.04;letter-spacing:-3px;margin:12px 0 10px}.hero h1 span{color:var(--red)}.hero p{color:var(--muted);margin:0;font-size:15px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 286px;gap:18px;align-items:start;padding-bottom:50px}.boardcard,.sidecard{background:linear-gradient(145deg,#1c2230,#171c27);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.boardcard{padding:18px}.boardtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.statline{display:flex;gap:22px}.stat small,.sidehead small{display:block;color:var(--muted);font:10px 'DM Mono',monospace;letter-spacing:1px;text-transform:uppercase}.stat strong{font:500 19px 'DM Mono',monospace;display:block;margin-top:3px}.best{color:var(--gold)}.sound{font-size:18px;background:var(--panel2);width:38px;height:38px;border-radius:11px}.board{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;max-width:510px;margin:0 auto;touch-action:manipulation}.cell{aspect-ratio:1;background:var(--cell);border-radius:5px;border:1px solid #ffffff06;transition:background .12s,transform .12s}.cell.filled{background:var(--piece,var(--red));border-color:#ffffff30;box-shadow:inset 0 2px 6px #ffffff30,0 2px 7px #0005}.cell.hint{background:#73e0ac44;border-color:#73e0ac}.pieceslabel{display:flex;justify-content:space-between;align-items:center;margin:20px auto 8px;max-width:510px}.pieceslabel span:first-child{font-size:13px;font-weight:600}.pieceslabel span:last-child{font:10px 'DM Mono',monospace;color:var(--muted)}.pieces{display:flex;justify-content:space-around;align-items:center;max-width:510px;margin:0 auto;min-height:89px}.piece{padding:10px;border-radius:12px;min-width:80px;min-height:68px;display:grid;place-items:center;cursor:pointer;border:1px solid transparent;touch-action:manipulation}.piece:hover,.piece.selected{background:#ffffff0c;border-color:#ffffff2b;transform:translateY(-2px)}.piece.used{opacity:.18;pointer-events:none}.mini{display:grid;gap:3px}.minirow{display:flex;gap:3px}.minicell{width:17px;height:17px;border-radius:4px;background:var(--piece,var(--red));box-shadow:inset 0 2px 4px #ffffff44}.minicell.off{visibility:hidden}.boardactions{display:flex;justify-content:center;gap:9px;margin-top:13px}.primary,.secondary{padding:11px 17px;border-radius:11px;font-weight:700;font-size:13px;transition:transform .15s,filter .15s}.primary{background:var(--red);box-shadow:0 5px 16px #ff4d5a33}.primary:hover{filter:brightness(1.1);transform:translateY(-1px)}.secondary{background:var(--panel2);border:1px solid var(--line)}.help{color:var(--muted);font-size:11px;text-align:center;margin:13px 0 0}.side{display:grid;gap:14px}.sidecard{padding:17px}.sidehead{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.sidehead h2{font-size:15px;margin:0}.featured{background:linear-gradient(135deg,#402c47,#24263a);border:1px solid #ffffff17;border-radius:13px;padding:14px;position:relative;overflow:hidden}.featured:after{content:'✦';position:absolute;right:13px;top:8px;font-size:40px;color:#ffcf7055}.featured strong{display:block;font-size:14px}.featured p{font-size:11px;line-height:1.5;color:#d0c8dc;margin:5px 0 12px;max-width:190px}.featured .primary{padding:9px 12px;font-size:11px}.collection{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #ffffff0d}.swatch{width:34px;height:34px;border-radius:9px;border:1px solid #ffffff24;flex:none}.iteminfo{flex:1}.iteminfo strong{display:block;font-size:12px}.iteminfo small{font:9px 'DM Mono',monospace;color:var(--muted)}.rarity{font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.5px}.common{color:#bac2ce}.rare{color:#61b4ff}.epic{color:#cd83ff}.legendary{color:var(--gold)}.empty{text-align:center;color:var(--muted);font-size:11px;padding:13px}.roomrow{display:flex;gap:7px}.roomrow input{width:100%;min-width:0;background:#11151f;border:1px solid var(--line);border-radius:9px;color:white;padding:10px;font:12px 'DM Mono',monospace;outline:none}.roomrow input:focus{border-color:var(--red)}.roomrow button{background:#333c4c;border-radius:9px;padding:0 11px;font-size:12px;font-weight:700;white-space:nowrap}.roomnote{color:var(--muted);font-size:10px;line-height:1.5;margin:10px 0 0}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);padding:12px 18px;border:1px solid var(--line);background:#252b38;border-radius:12px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s;z-index:10;font-size:13px}.toast.show{opacity:1;transform:translate(-50%,0)}.modalback{position:fixed;inset:0;background:#080a10c9;display:none;place-items:center;padding:20px;z-index:20}.modalback.open{display:grid}.modal{width:min(440px,100%);background:#1b2230;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow);position:relative}.close{position:absolute;top:15px;right:15px;background:#ffffff10;border-radius:8px;width:30px;height:30px;font-size:17px;color:var(--muted)}.modal h2{margin:0 30px 6px 0;font-size:23px;letter-spacing:-1px}.modal>p{margin:0 0 17px;color:var(--muted);font-size:12px;line-height:1.6}.packvisual{display:grid;place-items:center;height:126px;border-radius:15px;background:linear-gradient(145deg,#3b2b49,#242c43);font-size:54px;margin-bottom:15px}.odds{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 18px}.odds span{font:9px 'DM Mono',monospace;padding:6px 8px;border-radius:6px;background:#ffffff0a}.modal .primary{width:100%}.shopgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.skinoption{background:#222a39;border:1px solid var(--line);border-radius:12px;padding:12px;text-align:left}.skinoption:hover{border-color:#8792a5}.skinoption .swatch{width:28px;height:28px;margin-bottom:8px}.skinoption strong{display:block;font-size:12px}.skinoption small{color:var(--muted);font:9px 'DM Mono',monospace}.footer{text-align:center;color:#768195;font-size:10px;padding:0 0 22px}.footer a{color:#a6b0c1}@media(max-width:800px){.layout{grid-template-columns:1fr;max-width:610px;margin:auto}.side{grid-template-columns:1fr 1fr}.sidecard:first-child{grid-row:span 2}}@media(max-width:520px){.wrap{padding:0 13px}.top{height:64px}.brand{font-size:16px}.nav button{padding:8px 9px;font-size:12px}.wallet{padding:8px 9px;font-size:11px}.hero{padding:28px 0 20px}.hero h1{letter-spacing:-2px}.boardcard{padding:13px}.board{gap:4px}.cell{border-radius:4px}.statline{gap:15px}.stat strong{font-size:16px}.side{grid-template-columns:1fr}.sidecard:first-child{grid-row:auto}.pieces{min-height:75px}.minicell{width:15px;height:15px}}
-</style>
-</head>
-<body>
-<header class="wrap top"><div class="brand"><div class="logo"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4z" fill="white"/><path d="M13 16.5h7" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg></div>redbitkit</div><nav class="nav"><button id="navPlay">Play</button><button id="navCollection">Collection</button><button id="navRooms">Rooms</button></nav><div class="wallet">◆ <span id="coins">120</span> bits</div></header>
-<main class="wrap"><section class="hero"><div class="eyebrow">A pocket-sized block adventure</div><h1>Stack. Clear. <span>Collect.</span></h1><p>Easy to pick up. Tricky to put down. No account needed.</p></section>
-<div class="layout"><section class="boardcard" id="play"><div class="boardtop"><div class="statline"><div class="stat"><small>Score</small><strong id="score">0</strong></div><div class="stat"><small>Best</small><strong class="best" id="best">0</strong></div></div><button class="sound" id="sound" title="Toggle sound">♫</button></div><div class="board" id="board" aria-label="Game board"></div><div class="pieceslabel"><span>Choose a block</span><span>tap a piece, then tap the board</span></div><div class="pieces" id="pieces"></div><div class="boardactions"><button class="secondary" id="newGame">↻ &nbsp;New game</button><button class="secondary" id="shopBtn">▦ &nbsp;Block shop</button></div><p class="help">Fill a row or column to clear it. Use all three blocks to get a fresh set.</p></section>
-<aside class="side"><section class="sidecard"><div class="sidehead"><h2>Bit Market</h2><small>NO REAL MONEY</small></div><div class="featured"><strong>Pixel Party Pack</strong><p>A mystery bundle of colorful block styles. Earn bits by playing, then pop a pack.</p><button class="primary" id="packBtn">Open pack · 60 bits</button></div><div class="sidehead" style="margin:17px 0 5px"><h2>My collection</h2><button class="smallbtn" id="collectionBtn">See all ↗</button></div><div id="collectionPreview"></div></section>
-<section class="sidecard" id="rooms"><div class="sidehead"><h2>Play together</h2><small>NO SIGN-UP</small></div><div class="roomrow"><input id="roomCode" maxlength="6" placeholder="ROOM CODE" aria-label="Room code"><button id="hostBtn">Host</button></div><p class="roomnote">Create a room code to share. Online multiplayer needs a game server; this demo saves your room on this device only.</p><div id="roomStatus"></div></section>
-<section class="sidecard"><div class="sidehead"><h2>How to play</h2><small>QUICK GUIDE</small></div><p class="roomnote" style="margin:0">Pick one of the three blocks, then tap an open spot on the board. Complete a whole row or column to clear it and score. If no block fits, the round ends. Every placed block earns bits for your collection.</p></section></aside></div><div class="footer">RedBitKit is an original game concept. Your progress and collection are saved in this browser. <a href="https://github.com/MironMe/redbitkit">View source</a></div></main>
-<div class="toast" id="toast" role="status"></div><div class="modalback" id="modalback"><section class="modal" role="dialog" aria-modal="true"><button class="close" id="closeModal" aria-label="Close">×</button><div id="modalContent"></div></section></div>
-<script>
-(()=>{'use strict';
-const skins=[{id:'ember',name:'Ember Pop',color:'#ff4d5a',rarity:'Common',price:0},{id:'mint',name:'Mint Chip',color:'#5cdbab',rarity:'Common',price:0},{id:'ocean',name:'Blue Current',color:'#54a9ff',rarity:'Rare',price:80},{id:'violet',name:'Neon Orchid',color:'#b77aff',rarity:'Rare',price:100},{id:'sunset',name:'Sunset Glow',color:'#ff9d59',rarity:'Epic',price:160},{id:'gold',name:'Golden Glitch',color:'#ffcf70',rarity:'Legendary',price:0}];
-const shapes=[[[1]],[[1,1]],[[1],[1]],[[1,1,1]],[[1],[1],[1]],[[1,1],[1,1]],[[1,0],[1,1]],[[0,1],[1,1]],[[1,1,1],[0,1,0]],[[1,1,0],[0,1,1]],[[1,1,1,1]],[[1],[1],[1],[1]],[[1,1,1],[1,0,0]],[[1,1],[0,1],[0,1]]];
-const defaults={coins:120,unlocked:['ember','mint'],equipped:'ember',best:0};let saved={...defaults};try{saved={...defaults,...JSON.parse(localStorage.getItem('rbk-save')||'{}')}}catch(e){}let grid=Array.from({length:10},()=>Array(10).fill(null)),score=0,hand=[],selected=-1,roomSound=true;
-const $=s=>document.querySelector(s), board=$('#board'), piecesEl=$('#pieces');function persist(){localStorage.setItem('rbk-save',JSON.stringify(saved));$('#coins').textContent=saved.coins;$('#best').textContent=saved.best}
-function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),2100)}function color(){return skins.find(s=>s.id===saved.equipped)?.color||skins[0].color}
-function renderBoard(){board.innerHTML='';board.style.setProperty('--piece',color());for(let r=0;r<10;r++)for(let c=0;c<10;c++){const d=document.createElement('button');d.className='cell'+(grid[r][c]?' filled':'');d.setAttribute('aria-label',`Row ${r+1}, column ${c+1}${grid[r][c]?', filled':', empty'}`);if(grid[r][c])d.style.setProperty('--piece',grid[r][c]);d.addEventListener('click',()=>place(r,c));board.appendChild(d)}}
-function drawPiece(shape,into){const mini=document.createElement('div');mini.className='mini';shape.forEach(row=>{const rr=document.createElement('div');rr.className='minirow';row.forEach(v=>{const x=document.createElement('div');x.className='minicell'+(!v?' off':'');x.style.setProperty('--piece',color());rr.appendChild(x)});mini.appendChild(rr)});into.appendChild(mini)}
-function newHand(){hand=Array.from({length:3},()=>shapes[Math.floor(Math.random()*shapes.length)]);selected=-1;renderPieces()}
-function renderPieces(){piecesEl.innerHTML='';hand.forEach((s,i)=>{const el=document.createElement('button');el.className='piece'+(s?'':' used')+(i===selected?' selected':'');el.setAttribute('aria-label',`Choose block ${i+1}`);if(s)drawPiece(s,el);el.addEventListener('click',()=>{if(!hand[i])return;selected=i;renderPieces()});piecesEl.appendChild(el)})}
-function canFit(shape,r,c){for(let y=0;y<shape.length;y++)for(let x=0;x<shape[y].length;x++)if(shape[y][x]&&(r+y>=10||c+x>=10||grid[r+y][c+x]))return false;return true}
-function place(r,c){if(selected<0||!hand[selected]){toast('Tap a block first');return}const shape=hand[selected];if(!canFit(shape,r,c)){toast('That block needs a little more room');return}for(let y=0;y<shape.length;y++)for(let x=0;x<shape[y].length;x++)if(shape[y][x])grid[r+y][c+x]=color();hand[selected]=null;selected=-1;score+=shape.flat().filter(Boolean).length;saved.coins+=Math.max(1,Math.floor(shape.flat().filter(Boolean).length/2));let cleared=[];for(let y=0;y<10;y++)if(grid[y].every(Boolean))cleared.push(['r',y]);for(let x=0;x<10;x++)if(grid.every(row=>row[x]))cleared.push(['c',x]);for(const [axis,n] of cleared){if(axis==='r')grid[n]=Array(10).fill(null);else for(let y=0;y<10;y++)grid[y][n]=null}if(cleared.length){score+=cleared.length*10;saved.coins+=cleared.length*8;toast(`Nice! ${cleared.length} line${cleared.length>1?'s':''} cleared · +${cleared.length*8} bits`)}$('#score').textContent=score;if(score>saved.best)saved.best=score;persist();renderBoard();if(hand.every(x=>!x))newHand();else renderPieces();if(!hand.some(s=>s&&grid.some((row,y)=>row.some((_,x)=>canFit(s,y,x))))){setTimeout(()=>{if(!hand.some(s=>s&&grid.some((row,y)=>row.some((_,x)=>canFit(s,y,x)))))gameOver()},100)}}
-function gameOver(){modal(`<div class="eyebrow">Round complete</div><h2>Nice run!</h2><p>You scored <b>${score}</b> points. Your best score is <b>${saved.best}</b>. Start a fresh board and try to beat it.</p><button class="primary" id="again">Play again</button>`);$('#again').onclick=()=>{closeModal();reset()}}
-function reset(){grid=Array.from({length:10},()=>Array(10).fill(null));score=0;$('#score').textContent='0';renderBoard();newHand()}
-function modal(html){$('#modalContent').innerHTML=html;$('#modalback').classList.add('open')}function closeModal(){$('#modalback').classList.remove('open')}
-function collection(){const box=$('#collectionPreview');box.innerHTML='';const got=skins.filter(s=>saved.unlocked.includes(s.id));if(!got.length){box.innerHTML='<div class="empty">No blocks yet — open a pack!</div>';return}got.slice(0,4).forEach(s=>{const row=document.createElement('div');row.className='collection';row.innerHTML=`<div class="swatch" style="background:${s.color}"></div><div class="iteminfo"><strong>${s.name}${saved.equipped===s.id?' · equipped':''}</strong><small>${s.rarity.toUpperCase()}</small></div><span class="rarity ${s.rarity.toLowerCase()}">${s.rarity}</span>`;box.appendChild(row)})}
-function shop(){modal(`<div class="eyebrow">Customize your blocks</div><h2>Block shop</h2><p>Every style changes the color of your game blocks. Buy a look with bits you earn by playing.</p><div class="shopgrid" id="shopgrid"></div>`);const g=$('#shopgrid');skins.forEach(s=>{const b=document.createElement('button');b.className='skinoption';const owned=saved.unlocked.includes(s.id);b.innerHTML=`<div class="swatch" style="background:${s.color}"></div><strong>${s.name}</strong><small class="${s.rarity.toLowerCase()}">${s.rarity.toUpperCase()} · ${owned?(saved.equipped===s.id?'EQUIPPED':'OWNED'):(s.price+' BITS')}</small>`;b.onclick=()=>{if(owned){saved.equipped=s.id;persist();collection();shop();toast(`${s.name} equipped`)}else if(saved.coins>=s.price){saved.coins-=s.price;saved.unlocked.push(s.id);saved.equipped=s.id;persist();collection();shop();toast(`${s.name} unlocked!`)}else toast('Play a round to earn more bits')};g.appendChild(b)})}
-function pack(){const price=60;if(saved.coins<price){toast('Not enough bits — play a round to earn some');return}const unopened=skins.filter(s=>!saved.unlocked.includes(s.id)&&s.id!=='gold');if(!unopened.length){toast('You collected every pack style!');return}saved.coins-=price;const roll=Math.random(),rarity=roll<.68?'Rare':roll<.94?'Epic':'Legendary';let pool=unopened.filter(s=>s.rarity===rarity);if(!pool.length)pool=unopened;const item=pool[Math.floor(Math.random()*pool.length)];saved.unlocked.push(item.id);saved.equipped=item.id;persist();collection();modal(`<div class="eyebrow">Pack opened</div><div class="packvisual" style="color:${item.color}">✦</div><h2>${item.name}</h2><p>You found a <b class="${item.rarity.toLowerCase()}">${item.rarity}</b> block style! It’s now in your collection and equipped.</p><button class="primary" id="gotit">Awesome</button>`);$('#gotit').onclick=closeModal}
-function setupRoom(){const code=Math.random().toString(36).slice(2,8).toUpperCase();$('#roomCode').value=code;$('#roomStatus').innerHTML=`<p class="roomnote" style="color:var(--green)">Room ${code} created on this device. Share the code — live online play isn’t connected in this demo.</p>`;try{navigator.clipboard.writeText(code).then(()=>toast('Room code copied')).catch(()=>toast('Room code ready to share'))}catch(e){toast('Room code ready to share')}}
-$('#hostBtn').onclick=setupRoom;$('#roomCode').addEventListener('keydown',e=>{if(e.key==='Enter'){const c=e.target.value.trim().toUpperCase();if(c.length<4)toast('Enter a room code');else toast('This demo does not connect players online yet')}});$('#newGame').onclick=reset;$('#shopBtn').onclick=shop;$('#packBtn').onclick=pack;$('#collectionBtn').onclick=shop;$('#navCollection').onclick=shop;$('#navPlay').onclick=()=>$('#play').scrollIntoView({behavior:'smooth'});$('#navRooms').onclick=()=>$('#rooms').scrollIntoView({behavior:'smooth'});$('#closeModal').onclick=closeModal;$('#modalback').onclick=e=>{if(e.target.id==='modalback')closeModal()};$('#sound').onclick=()=>{roomSound=!roomSound;$('#sound').textContent=roomSound?'♫':'♩';toast(roomSound?'Sound on':'Sound off')};document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-persist();collection();renderBoard();newHand();
-})();
-</script>
-</body></html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Playful classroom game platform inspired by quiz battle lobbies." />
+    <title>GlowQuest | Play. Learn. Win.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="container nav">
+          <div class="brand-wrap">
+            <div class="brand-mark">G</div>
+            <div class="brand-text">
+              <span class="brand-name">GlowQuest</span>
+              <small>live class games</small>
+            </div>
+          </div>
+
+          <nav class="nav-links" aria-label="Main navigation">
+            <a href="#features">Features</a>
+            <a href="#modes">Modes</a>
+            <a href="#blooks">Blooks</a>
+            <a href="#community">Community</a>
+          </nav>
+
+          <div class="nav-actions">
+            <button class="btn btn-ghost">Log in</button>
+            <button class="btn btn-primary">Play now</button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <span class="eyebrow">Open-source quiz battle platform</span>
+              <h1>Turn every answer into a glow-up.</h1>
+              <p>
+                Host live trivia lobbies, unlock collectible blooks, and challenge your friends with fast,
+                joyful classroom-style gameplay.
+              </p>
+
+              <div class="cta-row">
+                <button class="btn btn-primary btn-large">Create room</button>
+                <button class="btn btn-secondary btn-large">Join with code</button>
+              </div>
+
+              <div class="meta-row">
+                <div>
+                  <strong>42k+</strong>
+                  <span>active players</span>
+                </div>
+                <div>
+                  <strong>1.8k+</strong>
+                  <span>question sets</span>
+                </div>
+                <div>
+                  <strong>99.9%</strong>
+                  <span>fun factor</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-panel">
+              <div class="lobby-card">
+                <div class="lobby-head">
+                  <span class="badge success">Live lobby</span>
+                  <span class="code-pill">Room: GLOW-42</span>
+                </div>
+
+                <div class="quiz-preview">
+                  <div class="question-box">
+                    <p class="qm">Which planet is known as the Red Planet?</p>
+                    <ul>
+                      <li class="answer correct">Mars</li>
+                      <li class="answer">Venus</li>
+                      <li class="answer">Mercury</li>
+                      <li class="answer">Jupiter</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="players-panel">
+                  <div class="player-row win">
+                    <div class="avatar aqua">L</div>
+                    <span>Luna</span>
+                    <strong>860</strong>
+                  </div>
+                  <div class="player-row">
+                    <div class="avatar pink">M</div>
+                    <span>Mateo</span>
+                    <strong>700</strong>
+                  </div>
+                  <div class="player-row">
+                    <div class="avatar gold">A</div>
+                    <span>Ari</span>
+                    <strong>640</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="logo-strip">
+          <div class="container logo-row">
+            <span>QuizVerse</span>
+            <span>ClassRush</span>
+            <span>StudyBolt</span>
+            <span>PixelPlay</span>
+            <span>BrainBloom</span>
+          </div>
+        </section>
+
+        <section id="features" class="section">
+          <div class="container">
+            <div class="section-header">
+              <span class="eyebrow purple">Why players stay</span>
+              <h2>Built for speed, energy, and replay value.</h2>
+            </div>
+
+            <div class="feature-grid">
+              <article class="feature-card">
+                <div class="icon-wrap yellow">⚡</div>
+                <h3>Instant lobbies</h3>
+                <p>Create a room in seconds and drop players into a fast, live game loop.</p>
+              </article>
+
+              <article class="feature-card">
+                <div class="icon-wrap pink">🎯</div>
+                <h3>Smart question sets</h3>
+                <p>Upload custom quiz banks, mix categories, and tailor the challenge level.</p>
+              </article>
+
+              <article class="feature-card">
+                <div class="icon-wrap blue">🏆</div>
+                <h3>Leaderboard energy</h3>
+                <p>Keep every round competitive with score streaks, power-ups, and rankings.</p>
+              </article>
+
+              <article class="feature-card">
+                <div class="icon-wrap green">✨</div>
+                <h3>Collectible cosmetics</h3>
+                <p>Unlock blooks, rarities, and avatar flair that match each player’s style.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="modes" class="section alt-section">
+          <div class="container">
+            <div class="section-header narrow">
+              <span class="eyebrow blue">Game modes</span>
+              <h2>Pick a mode and keep the room buzzing.</h2>
+            </div>
+
+            <div class="modes-grid">
+              <div class="mode-card active">
+                <div class="mode-icon">🏁</div>
+                <h3>Classic</h3>
+                <p>Fast-paced rounds with real-time answers, streaks, and leaderboard pressure.</p>
+              </div>
+
+              <div class="mode-card">
+                <div class="mode-icon">🧠</div>
+                <h3>Challenge</h3>
+                <p>High-difficulty questions with bonus multipliers and burst rewards.</p>
+              </div>
+
+              <div class="mode-card">
+                <div class="mode-icon">💎</div>
+                <h3>Treasure Trail</h3>
+                <p>Race through question checkpoints to unlock rare rewards and power-ups.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="blooks" class="section">
+          <div class="container">
+            <div class="section-header">
+              <span class="eyebrow pink">Collection</span>
+              <h2>Collect glittering blooks and equip your style.</h2>
+            </div>
+
+            <div class="blook-grid">
+              <div class="blook-card rare">
+                <div class="blook-art sky">🐬</div>
+                <h3>Coral Pup</h3>
+                <span>Rare</span>
+              </div>
+
+              <div class="blook-card epic">
+                <div class="blook-art purple">🦊</div>
+                <h3>Nova Fox</h3>
+                <span>Epic</span>
+              </div>
+
+              <div class="blook-card legendary">
+                <div class="blook-art gold">🐉</div>
+                <h3>Golden Drake</h3>
+                <span>Legendary</span>
+              </div>
+
+              <div class="blook-card common">
+                <div class="blook-art green">🐢</div>
+                <h3>Moss Turtle</h3>
+                <span>Common</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section insights">
+          <div class="container stats-panel">
+            <div class="stat-box">
+              <strong>4.9/5</strong>
+              <span>player rating</span>
+            </div>
+            <div class="stat-box">
+              <strong>2.4M</strong>
+              <span>questions played</span>
+            </div>
+            <div class="stat-box">
+              <strong>120+</strong>
+              <span>custom packs</span>
+            </div>
+            <div class="stat-box">
+              <strong>24/7</strong>
+              <span>live rooms</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="community" class="section demo-section">
+          <div class="container demo-grid">
+            <div class="demo-copy">
+              <span class="eyebrow green">How it works</span>
+              <h2>Launch a room, invite friends, and let the game begin.</h2>
+              <ol>
+                <li>Create a lobby with a custom question set.</li>
+                <li>Share a room code or direct invite link.</li>
+                <li>Watch answers, streaks, and rankings update live.</li>
+                <li>Unlock collectibles and replay for more rewards.</li>
+              </ol>
+              <button class="btn btn-primary">Start building</button>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="dash-top">
+                <span>Player feed</span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="feed-list">
+                <div class="feed-item">
+                  <span class="bubble cyan">L</span>
+                  <div>
+                    <strong>Luna</strong>
+                    <small>answered correctly</small>
+                  </div>
+                  <em>+120</em>
+                </div>
+                <div class="feed-item">
+                  <span class="bubble pink">M</span>
+                  <div>
+                    <strong>Mateo</strong>
+                    <small>used a streak boost</small>
+                  </div>
+                  <em>+80</em>
+                </div>
+                <div class="feed-item">
+                  <span class="bubble gold">A</span>
+                  <div>
+                    <strong>Ari</strong>
+                    <small>unlocked a new blook</small>
+                  </div>
+                  <em>Rare</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-wrap">
+          <div>
+            <div class="brand-wrap footer-brand">
+              <div class="brand-mark">G</div>
+              <div class="brand-text">
+                <span class="brand-name">GlowQuest</span>
+                <small>open-source edition</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <a href="#features">Features</a>
+            <a href="#modes">Modes</a>
+            <a href="#blooks">Blooks</a>
+            <a href="#community">Community</a>
+          </div>
+
+          <button class="btn btn-secondary">Launch project</button>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
